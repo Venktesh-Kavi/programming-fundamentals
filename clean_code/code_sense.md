@@ -1,4 +1,4 @@
-## CLEAN CODE
+# CLEAN CODE
 
 
 ## BAD CODE
@@ -44,7 +44,7 @@ Compains from developers
 * They may defend the requirements and the schedule, it is our job to defend the code.
 
 
-### The Art of Clean Code?
+### The Art of Clean Code
 
 * Programmers require "code-sense". A programmer with code sense can look at a messy code and see options and variations.
 * Code sense helps programmers choose from the best of the variations and transform the code from messy to an elegant one.
@@ -100,4 +100,64 @@ American Boy Scout Rule
     - Each should tell a story
     - Each should lead to a compelling order
 2. Do one thing
-    - Functions should do one thing, they should do it well.They should do  it only. 
+    - Functions should do one thing, they should do it well.They should do it only.
+3. One level of abstraction per function
+    - mixing very high level, intemediate and low level abstractions
+    - x.getHtml() high level of abstraction, PageParse.parsePage() is intermediate, StringBuffer.append() is low level
+    - All the above in a single method, just reduces the cognitive sense of the reader.
+4. Step down rule
+    - Code should be top-down narrative
+    - Every function to be followed by those at the next level of abstraction, descend one level of abstraction at a time
+    - Reading a program should be like a set of `TO paragraphs
+    - To do x which requires Y, To perform Y etc..,
+5. Switch S`tatements
+    - switch statements always tend to do N things
+    - Bury switch statements at a level so that they are not repeated anywhere
+    - Employee eg: 
+
+```
+public Money calculatePay(Employee e) {
+    switch(e.type()) {
+        case COMMISIONED:
+            return calculateCommisionpay(e);
+        case SALAIRED:
+            return calculateSalariedPay(e);
+        default:
+            throw new IllegalArgumentException("unknown");
+    }
+}
+
+```
+    - Violates SRP and OCP, more than one reason for change and changes whenever new types are added respectively.
+    - Many underlying functions will start using the same structure, because we need to pass on the Employee(e) object.
+    - Use an abstract factory instead
+
+```
+public class EmployeeFactoryImpl implements EmployeeFactory {
+    switch(er.getType()) {
+        case COMMISIONED:
+            return new CommissionedEmployee(er);
+        case SALARIED:
+            return new SalariedEmployee(er);
+        default:
+            throw new InvalidEmployeeType("unknown");
+    }
+}
+
+public abstract class Employee {
+    public abstract boolean isPayDay();
+    public abstrct Long calculatePay();
+}
+
+public interface EmployeeFactory {
+    public Employee makeEmployee(EmployeeRecord er) throws InvalidEmployeeType;
+}
+
+
+public static void main() {
+    EmployeeRecord er = new EmployeeRecord("COMMISIONED");
+    ComissionedEmployee ce = EmployeeFactory.makeEmployee(er);
+    ce.isPayDay();
+}
+```
+
