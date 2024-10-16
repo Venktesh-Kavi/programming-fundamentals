@@ -1,6 +1,6 @@
 ## Git Knowledge Base
 
-#### Dont use pull from remote
+### Dont use pull from remote
 
 * Assume that there are two developers working on the same branch
 ```
@@ -23,7 +23,7 @@ Solution
 * Always perform git pull --rebase
 * If there is merge conflict (eg.. between A' and A'') then use git merge to resolve the conflict.
 
-#### Maintaintaing a neat commit history
+### Maintaintaing a neat commit history
 
 Squash and Merge
 * Perform squash and merge. Each feature branch might have multiple merge commits because of merging base branch with feature branch
@@ -45,4 +45,24 @@ Rebase
 4/ git add
 5/ git push
 ```
+### Git Worktre
+
+- Since git v2.5.0 (2015 release)
+
+disadvantages of git stash
+
+1/ Many rebuilds
+2/ Only one active worktree is present with conventional git stash approach
+
+Example:
+If the codebase working has a longer build time. git stashing and swithcing to a new branch requires rebuild.
+Similarly stash popping the changes in the current branch requires a rebuild
+
+intro git worktree
+* Always add worktree to the parent directory of the current working project. Nested worktree can cause confusions during file additions.
+
+1/ git worktree add ../ex-hotfix-worktree
+2/ git worktree list
+3/ git worktree remove . (typically worktree stay longer to reduce rebuilds on branches like main)
+
 
