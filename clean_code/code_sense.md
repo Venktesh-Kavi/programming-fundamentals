@@ -1,5 +1,6 @@
 # CODING GUIDELINES 
 
+> Reference: Clean Code (Uncle Bob)
 
 ## Why need coding guidelines?
 
