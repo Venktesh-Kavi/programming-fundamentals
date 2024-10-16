@@ -1,12 +1,12 @@
-# CLEAN CODE
+# CODING GUIDELINES 
 
 
-## BAD CODE
+## Why need coding guidelines?
 
-* Aggressive release cycles, quick product to market movement should be accompanies with careful consideration on code. Companies are brought down by poor code
+* Aggressive release cycles, quick product to market movement should be accompanied with careful consideration on code. Companies are brought down by poor code
 * Impeding caused by bad code is called wading
 * We all think of going back and cleaning it later -
-> LeBlanc's Law: "Later equals never"
+    > LeBlanc's Law: "Later equals never"
 
 ### Total Cost of Owning a Mess
 
@@ -29,14 +29,14 @@
 
 ### Attitude
 
-> What does good code rot to bad one?
+#### What does good code rot to bad one?
 
 Compains from developers
 * Requirement changes which thwarts intial design
 * Tight schedules
 * We harp about bad managers, intolerant customer and poor marketing startegies
 
-> * The fault is on us, bitter pill to swallow!!!
+#### The fault is on us, bitter pill to swallow!!!
 
 * Tech, project and product managers look up to us for information.
 * Don't be shy in telling them what you think
@@ -48,12 +48,8 @@ Compains from developers
 
 * Programmers require "code-sense". A programmer with code sense can look at a messy code and see options and variations.
 * Code sense helps programmers choose from the best of the variations and transform the code from messy to an elegant one.
-
-### Boy Scout Rule
-
-* Its not about writing clean code once, it is about continuing to maintain clean code.
-American Boy Scout Rule
-> Leave the campground cleaner than you found it.
+* ***Its not about writing clean code once, it is about continuing to maintain clean code.***
+    > Leave the campground cleaner than you found it.
 
 ## Meaningful Names
 
