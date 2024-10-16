@@ -49,10 +49,10 @@ Rebase
 
 - Since git v2.5.0 (2015 release)
 
-disadvantages of git stash
+Disadvantages of git stash
 
-1/ Many rebuilds
-2/ Only one active worktree is present with conventional git stash approach
+- Many rebuilds
+- Only one active worktree is present with conventional git stash approach
 
 Example:
 If the codebase working has a longer build time. git stashing and swithcing to a new branch requires rebuild.
@@ -61,8 +61,8 @@ Similarly stash popping the changes in the current branch requires a rebuild
 intro git worktree
 * Always add worktree to the parent directory of the current working project. Nested worktree can cause confusions during file additions.
 
+```
 1/ git worktree add ../ex-hotfix-worktree
 2/ git worktree list
 3/ git worktree remove . (typically worktree stay longer to reduce rebuilds on branches like main)
-
-
+```
