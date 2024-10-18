@@ -169,3 +169,12 @@ Compains from developers
         3/ Error handling
         4/ Orchestrating different pay calculations
 
+    Violation of OCP
+        - Adding a new employee type requires modifying existing code
+        - The switch statement must be updated
+        - Risk of breaking existing functionality
+        - Hard to maintain as the number of employee types grows
+        -
+    [Ref Better Swtich Case](https://github.com/Venktesh-Kavi/programming-fundamentals/blob/main/clean_code/better_switch_cases.java)
+    ```
+
