@@ -89,7 +89,7 @@ Compains from developers
     - Be helpful to your IDE so that searches with a letter U for eg.., dont result in a large result set.
 
 
-## Fucntions
+## Functions 
 
 1. Functions should be small, but how small?
     - Depending on the context functions can range from 5 - 10 lines as per ULS guidelines
@@ -107,7 +107,7 @@ Compains from developers
     - Every function to be followed by those at the next level of abstraction, descend one level of abstraction at a time
     - Reading a program should be like a set of `TO paragraphs
     - To do x which requires Y, To perform Y etc..,
-5. Switch S`tatements
+5. Switch Statements 
     - switch statements always tend to do N things
     - Bury switch statements at a level so that they are not repeated anywhere
     - Violates SRP and OCP, more than one reason for change and changes whenever new types are added respectively.
