@@ -110,51 +110,62 @@ Compains from developers
 5. Switch S`tatements
     - switch statements always tend to do N things
     - Bury switch statements at a level so that they are not repeated anywhere
-    - Employee eg: 
-
-```
-public Money calculatePay(Employee e) {
-    switch(e.type()) {
-        case COMMISIONED:
-            return calculateCommisionpay(e);
-        case SALAIRED:
-            return calculateSalariedPay(e);
-        default:
-            throw new IllegalArgumentException("unknown");
-    }
-}
-
-```
     - Violates SRP and OCP, more than one reason for change and changes whenever new types are added respectively.
-    - Many underlying functions will start using the same structure, because we need to pass on the Employee(e) object.
-    - Use an abstract factory instead
+    - Employee eg:
 
-```
-public class EmployeeFactoryImpl implements EmployeeFactory {
-    switch(er.getType()) {
-        case COMMISIONED:
-            return new CommissionedEmployee(er);
-        case SALARIED:
-            return new SalariedEmployee(er);
-        default:
-            throw new InvalidEmployeeType("unknown");
-    }
-}
+    ```
+        public Money calculatePay(Employee e) {
+            switch(e.type()) {
+                case COMMISIONED:
+                    return calculateCommisionpay(e);
+                case SALAIRED:
+                    return calculateSalariedPay(e);
+                default:
+                    throw new IllegalArgumentException("unknown");
+            }
+        }
+    
+    This function violates SRP because it can change for multiple, independent reasons:
 
-public abstract class Employee {
-    public abstract boolean isPayDay();
-    public abstrct Long calculatePay();
-}
+    Changes to Employee Types
 
-public interface EmployeeFactory {
-    public Employee makeEmployee(EmployeeRecord er) throws InvalidEmployeeType;
-}
+        1/ Adding a new employee type (e.g., Contractor, Intern)
+        2/ Removing an existing employee type
+        3/ Modifying the employee type enumeration
 
 
-public static void main() {
-    EmployeeRecord er = new EmployeeRecord("COMMISIONED");
-    ComissionedEmployee ce = EmployeeFactory.makeEmployee(er);
-    ce.isPayDay();
-}
-```
+    Changes to Pay Calculation Rules
+
+        1/ If the structure of how any type calculates pay changes
+        2/ If error handling for pay calculation needs to change
+        3/ If validation rules for pay calculation change
+
+
+    Changes to Error Handling
+
+        1/ Modifying how invalid employee types are handled
+        2/ Adding new exception types or error conditions
+        3/ Changing error reporting requirements
+
+
+    Changes to Business Process Flow
+
+        1/ If the order of operations needs to change
+        2/ If pre or post-processing steps need to be added
+        3/ If auditing or logging requirements change
+
+
+    Changes to the Method's Interface
+
+        1/ If the parameter type needs to change
+        2/ If the return type needs to change
+        3/ If additional context information needs to be passed
+
+
+    The core issue is that this method is doing too much:
+
+        1/ Type checking
+        2/ Routing logic
+        3/ Error handling
+        4/ Orchestrating different pay calculations
 
