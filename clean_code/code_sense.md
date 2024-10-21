@@ -177,4 +177,21 @@ Compains from developers
         -
     [Ref Better Swtich Case](https://github.com/Venktesh-Kavi/programming-fundamentals/blob/main/clean_code/better_switch_cases.java)
     ```
+`
+### Arguments 
 
+- Prefer no arguments to a method. Arguments adds interpretation complexity and makes testing also a lot tougher as we need to mock each parameter
+- Each argument comes with a cognitive compleixty for the reader to understand.
+- Prefer order no args > monadic > diadic > triadic (think twice before having a triadic argument)
+- Examples of monadic
+    - boolean fileExsits(File file) -> OK (asks a question about an argument)
+    - InputStream fileOpen(File file) -> OK (transforms an input and returns an output)
+    - void triggerFileOpenFailedEvent(File file) -> OK (method without return are acceptable for events like this)
+    - void transform(StringBuffer sb) -> transforming sb inplace in the method is less preferred than performing StringBuffer transform(StringBuffer sb). (Clearer to the reader)
+
+- Avoid Flag arguments (flags are clear violation of SRP, method does more than one thing)
+    - Rather break down into two functions
+- Less preference to Dyadic functions does not mean to avoid something like this Point(int x, int y) -> This is absolutely fine.
+    - If arguments are ordered components of a single value.
+    - Avoid something like asset(expected, actual) -> these two args have no correlation (user has to remember that arg ordering, this adds to reader complexity).
+- For triads think twice (consider making objects which seem to group together)
