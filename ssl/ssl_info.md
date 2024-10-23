@@ -61,6 +61,15 @@ Security Considerations
 Protection of Private Keys: The security of SSL termination relies heavily on keeping the private key secure. If an attacker gains access to the private key, they can decrypt any traffic encrypted with the corresponding public key.
 Certificate Management: It's important to manage SSL certificates and keys properly, including regular updates and revocation of compromised certificates.
 
+## How does VPN in the middle affect SSL termination?
+
+* VPN does not modify anything in SSL process
+* It just acts as a secure tunnel for sending 
+
+## Useful commands
+
+1. Open SSL certificate file (pem/crt): `openssl x509 -in CredavenuePrivateLimited-40058RootCA.crt -text -noout`
+2. Get Full Certificate Chain: `openssl s_client -showcerts -servername yubioci-uat-uls-gateway-api.go-yubi.in -connect yubioci-uat-uls-gateway-api.go-yubi.in:443 </dev/null`
 
 ## Real World Examples
 
