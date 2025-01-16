@@ -53,6 +53,6 @@ To Enhance rolling hash
 * Using a prime number = 31, m = 1000, the hashes of 12, 120, 1200, 12000 are unique and there are no collisions
 * Primes ensure that when performing modulo operations with a large number 𝑚, the generated hash values are less likely to overlap, leading to fewer collisions.
 
-** Example with b = 31 and modulo = 1000000007. **
+**Example with b = 31 and modulo = 1000000007.**
 
 
