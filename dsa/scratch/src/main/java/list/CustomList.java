@@ -88,7 +88,7 @@ public class CustomList<T> implements List<T> {
         }
 
         if (!(newCap - MAX_ARRAY_SIZE <= 0)) {
-            newCap = hugeCapacity(minCap);
+            newCap = hugeCap(minCap);
         }
 
         Object[] newArr = new Object[newCap];
