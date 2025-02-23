@@ -66,3 +66,50 @@ intro git worktree
 2/ git worktree list
 3/ git worktree remove . (typically worktree stay longer to reduce rebuilds on branches like main)
 ```
+
+
+### Managing Multiple GitHub Accounts
+
+- Generate ssh keys, ssh key method generates a private and a public key using the specific algorithm. RSA or ed25519. RSA is used for legacy purposes use ed25519.
+
+```
+ssh-keygen -t ed25519 -C "venktesh.kaviarasan@outlook.com" -f "id_rsa_personal"
+ssh-keygen -t ed25519 -C "venktesh.k@go-yubi.com" -f "id_rsa_yubi"
+```
+- Add the public keys to github.com to SSH and GPG keys.
+- Verify the connectivity
+
+```
+ssh -T git@github.com-yubi
+ssh -T git@github.com-personal
+```
+
+- Add keys to apple keychain so that it gets verified or used automatically.
+```
+ssh-add --apple-use-keychain ~/.ssh/id_rsa_personal
+ssh-add --apple-use-keychain ~/.ssh/id_rsa_yubi
+ssh-add -l // verify
+```
+
+- Verify connectivity and check whether the correct key is being offered. Search for offer and it should use the correct public key
+
+```
+ssh -vT git@github.com-personal
+```
+- Add an config in ~/.ssh
+
+```
+Host github.com-yubi
+    HostName github.com
+    User git
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa_yubi
+
+Host github.com-personal
+    HostName github.com
+    User git
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa_personal
+```
