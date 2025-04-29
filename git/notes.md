@@ -113,3 +113,5 @@ Host github.com-personal
     UseKeychain yes
     IdentityFile ~/.ssh/id_rsa_personal
 ```
+
+- Git reset, restore, revert [ref: https://blog.git-init.com/how-to-undo-changes-in-git-using-reset-revert-and-restore/]
